@@ -13,7 +13,7 @@ import static java.util.stream.Collectors.toMap;
  */
 public class StringOperation {
     public static void main(String[] args) {
-        System.out.println(parseString("a=b&c=d"));
+        System.out.println(parseString("a=b&c=d&e=f"));
     }
 
     /**
