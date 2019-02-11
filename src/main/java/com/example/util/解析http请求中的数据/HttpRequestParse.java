@@ -30,6 +30,9 @@ public class HttpRequestParse {
         return 0;
     }
 
+    /**
+     * 此处研究一下是否可以把输入流转换成stream流
+     */
     private static String getRequestString(HttpServletRequest request) {
         StringBuilder sb = new StringBuilder();
         try (ServletInputStream sis = request.getInputStream(); InputStreamReader ir = new InputStreamReader(sis, StandardCharsets.UTF_8); BufferedReader br = new BufferedReader(ir)) {
