@@ -26,7 +26,8 @@ import java.util.concurrent.TimeUnit;
 @Warmup(iterations = 1, time = 3)
 @Measurement(iterations = 3, time = 3)
 public class StringOperation {
-    private static String testString = "这是一段字符串，这是一段字符串，这是一段字符串，这是一段字符串，这是一段字符串，这是一段字符串，这是一段字符串，这是一段字符串，这是一段字符串，这是一段字符串，这是一段字符串，测试，这是一段字符串，这是一段字符串，这是一段字符串";
+    private static String testString = "这是一段字符串，这是一段字符串，这是一段字符串，这是一段字符串，这是一段字符串，这是一段字符串，" +
+            "这是一段字符串，这是一段字符串，这是一段字符串，这是一段字符串，这是一段字符串，测试，这是一段字符串，这是一段字符串，这是一段字符串";
 
     public static void main(String[] args) throws RunnerException {
         Options opt = new OptionsBuilder().include(StringOperation.class.getSimpleName()).build();

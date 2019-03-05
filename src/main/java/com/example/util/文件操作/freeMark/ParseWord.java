@@ -1,4 +1,4 @@
-package com.example.util.操作word文档.freeMark;
+package com.example.util.文件操作.freeMark;
 
 import freemarker.template.Configuration;
 import freemarker.template.Template;
