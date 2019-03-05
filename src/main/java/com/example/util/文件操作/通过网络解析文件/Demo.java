@@ -16,7 +16,6 @@ import java.io.IOException;
  */
 public class Demo {
     private Document parseDoc(String path) throws IOException {
-
         String fileName = path + ".html";
         String url = fileName.replace("/home/btsp/spider/html/", "http://127.0.0.1:17879/");
         // HtmlUnit 模拟浏览器
@@ -40,9 +39,7 @@ public class Demo {
         }
         // 等待js后台执行30秒
         webClient.waitForBackgroundJavaScript(1000);
-
         String pageAsXml = page.asXml();
-
         Document doc = Jsoup.parse(pageAsXml);
         return doc;
     }
