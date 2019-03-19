@@ -22,9 +22,8 @@ public class ParseExcel {
      * @param filePath 文件路径
      */
     public void readExcel(String filePath) {
-        XSSFWorkbook xssfWorkbook;
         try {
-            xssfWorkbook = new XSSFWorkbook(filePath);
+            XSSFWorkbook xssfWorkbook = new XSSFWorkbook(filePath);
             Sheet sheet = xssfWorkbook.getSheetAt(0);
             //对表格进行遍历
             for (int i = 0; i <= sheet.getLastRowNum(); i++) {
