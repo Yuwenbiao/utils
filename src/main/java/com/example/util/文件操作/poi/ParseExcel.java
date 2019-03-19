@@ -1,7 +1,7 @@
 package com.example.util.文件操作.poi;
 
 import org.apache.poi.ss.usermodel.Row;
-import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import java.io.FileOutputStream;
@@ -25,9 +25,9 @@ public class ParseExcel {
         XSSFWorkbook xssfWorkbook;
         try {
             xssfWorkbook = new XSSFWorkbook(filePath);
-            XSSFSheet sheet = xssfWorkbook.getSheetAt(0);
-            int lastRowNum = sheet.getLastRowNum();
-            for (int i = 0; i <= lastRowNum; i++) {
+            Sheet sheet = xssfWorkbook.getSheetAt(0);
+            //对表格进行遍历
+            for (int i = 0; i <= sheet.getLastRowNum(); i++) {
                 System.out.println(sheet.getRow(i).getCell(1).getStringCellValue());
             }
         } catch (IOException e) {
@@ -40,16 +40,15 @@ public class ParseExcel {
      *
      * @param dataList 数据集合
      */
-    public static void writeExcel(List<Map> dataList) {
-        XSSFWorkbook xssfWorkbook;
-        try (FileOutputStream outputStream = new FileOutputStream("/home/ywb/Documents/test/testO.xlsx")) {
-            xssfWorkbook = new XSSFWorkbook();
-            XSSFSheet sheet = xssfWorkbook.createSheet();
-            int lastRowNum = dataList.size();
-            for (int i = 0; i < lastRowNum; i++) {
+    public static void writeExcel(List<Map> dataList, String outFilePath) {
+        try (FileOutputStream outputStream = new FileOutputStream(outFilePath)) {
+            XSSFWorkbook xssfWorkbook = new XSSFWorkbook();
+            Sheet sheet = xssfWorkbook.createSheet();
+
+            //将数据循环写入每一行
+            for (int i = 0; i < dataList.size(); i++) {
                 Row row = sheet.createRow(i);
                 Map dataMap = dataList.get(i);
-
                 int cellIndex = 0;
                 for (Object value : dataMap.values()) {
                     row.createCell(cellIndex++).setCellValue(String.valueOf(value));
