@@ -16,7 +16,7 @@ public class ParseTxt {
     private static List<String> content = Arrays.asList("1", "2", "3", "4");
 
     public static void main(String[] args) {
-        writeFile();
+        writeFile(content, "content.txt");
     }
 
     public void readFile() {
@@ -26,8 +26,8 @@ public class ParseTxt {
     /**
      * 将字符串集合写入到txt文件中
      */
-    public static void writeFile() {
-        File f = new File("content.txt");
+    public static void writeFile(List<String> content, String fileName) {
+        File f = new File(fileName);
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(f))) {
             for (String str : content) {
                 bw.write(str);
