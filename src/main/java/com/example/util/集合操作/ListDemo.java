@@ -47,16 +47,27 @@ public class ListDemo {
      */
     private static void sortDemo() {
         List<TestDemo> testDemos = Arrays.asList(new TestDemo("b"), new TestDemo("a"));
-        testDemos.sort(Comparator.comparing(a -> a.time));
-        for (TestDemo testDemo : testDemos) {
-            System.out.println(testDemo.time);
-        }
+        //正序排序
+        testDemos.sort(Comparator.comparing(TestDemo::getTime));
+        testDemos.forEach(a -> System.out.println(a.getTime()));
+
+        //倒序排序
+        testDemos.sort((a, b) -> b.getTime().compareTo(a.getTime()));
+        testDemos.forEach(a -> System.out.println(a.getTime()));
     }
 
     static class TestDemo {
-        String time;
+        private String time;
 
         public TestDemo(String time) {
+            this.time = time;
+        }
+
+        public String getTime() {
+            return time;
+        }
+
+        public void setTime(String time) {
             this.time = time;
         }
     }
